@@ -5,12 +5,15 @@ import { ProjectsSection } from "@/components/landing/ProjectsSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { InsightSection } from "@/components/landing/InsightSection";
 import { TrustSection } from "@/components/landing/TrustSection";
+import { CalculatorSection } from "@/components/landing/CalculatorSection";
 import { CtaSection } from "@/components/landing/CtaSection";
 import { Footer } from "@/components/landing/Footer";
+import { SplashScreen } from "@/components/landing/SplashScreen";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-white text-zinc-900 selection:bg-brand selection:text-white">
+      <SplashScreen />
       <Navbar />
       <HeroSection />
       <MetricsSection />
@@ -18,6 +21,7 @@ export default function Home() {
       <FeaturesSection />
       <InsightSection />
       <TrustSection />
+      <CalculatorSection />
       <CtaSection />
       <Footer />
     </div>
