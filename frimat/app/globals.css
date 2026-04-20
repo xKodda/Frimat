@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: #ea580c; /* High visibility construction orange */
+  --color-brand-hover: #c2410c;
+
+  --color-primary-dark: #121212;
+  --color-primary-medium: #1f1f1f;
+  
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #121212;
+  }
+}
+
+body {
+  background-color: theme('colors.zinc.50');
+  color: theme('colors.zinc.900');
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
