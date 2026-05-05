@@ -22,27 +22,27 @@ export function Footer() {
           </div>
           
           <div className="flex flex-col gap-4">
-            <h5 className="text-white font-bold uppercase tracking-wider text-xs mb-2">Operaciones</h5>
-            <a href="#" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
-              <MapPin className="w-4 h-4 text-brand" /> Av. Desarrollo Industrial 1234, Santiago
+            <h5 className="text-white font-bold uppercase tracking-wider text-xs mb-2">Contacto Directo</h5>
+            <div className="flex items-center gap-3 text-sm text-zinc-300 font-bold mb-2">
+              <span className="w-8 h-[1px] bg-brand"></span>
+              MAURICIO FUENTES DIAZ
+            </div>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
+              <MapPin className="w-4 h-4 text-brand" /> Panamericana Norte 18450, Lampa, Santiago
             </a>
-            <a href="#" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
-              <Phone className="w-4 h-4 text-brand" /> +56 9 1234 5678
+            <a href="tel:+56978094716" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
+              <Phone className="w-4 h-4 text-brand" /> +56 9 7809 4716
             </a>
-            <a href="#" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
-              <Mail className="w-4 h-4 text-brand" /> propuestas@empresa-ejecutora.cl
+            <a href="mailto:Mfuentes@frimat.cl" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
+              <Mail className="w-4 h-4 text-brand" /> Mfuentes@frimat.cl
             </a>
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold uppercase tracking-widest text-zinc-600">
-          <span>© 2026 Ejemplo Operativo. Uso exclusivo B2B.</span>
+        <div className="mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-zinc-600">
+          <span>© 2026 Frimat S.A. Todos los derechos reservados.</span>
           <div className="flex items-center gap-3">
-            <span>Diseñado como herramienta comercial</span>
-            <span className="w-1 h-1 bg-zinc-700 rounded-full"></span>
-            <a href="https://clikium.cl/" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">
-              Desarrollado por Clikium
-            </a>
+            <span>Diseño y Desarrollo Tecnológico por <a href="https://clikium.cl/" target="_blank" rel="noopener noreferrer" className="text-brand hover:underline font-bold">Clikium</a></span>
           </div>
         </div>
       </div>

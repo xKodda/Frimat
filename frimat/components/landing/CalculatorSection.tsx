@@ -123,10 +123,7 @@ export function CalculatorSection() {
               <div className="bg-white/10 border border-white/20 p-4 rounded mb-8 flex items-start gap-3">
                 <Info className="w-5 h-5 text-brand shrink-0 mt-0.5" />
                 <p className="text-xs text-zinc-300 leading-relaxed font-medium">
-                  Este modelo es 100% referencial. Demuestra la capacidad tecnológica de captar al mandante calculando costos en tiempo real, desarrollado por{" "}
-                  <a href="https://clikium.cl/" target="_blank" rel="noopener noreferrer" className="text-white font-bold underline hover:text-brand transition-colors">
-                    Clikium
-                  </a>.
+                  Este presupuesto es una estimación técnica preliminar. Para una cotización formal y detallada ajustada a sus planos, por favor contáctenos para agendar una visita técnica.
                 </p>
               </div>
 

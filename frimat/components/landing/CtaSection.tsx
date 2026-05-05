@@ -3,13 +3,13 @@ import { ArrowRight, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Reemplaza con tu número. Ej: "569XXXXXXXX"
-const WHATSAPP_NUMBER = "56978785893"; 
+const WHATSAPP_NUMBER = "56978094716"; 
 
 export function CtaSection() {
   const whatsappMessage = encodeURIComponent("WhatsApp Oficial Frimat. Quisiera contactarme con el área comercial para coordinar una reunión de licitaciones.");
 
   return (
-    <section id="contacto" className="py-24 bg-zinc-50 border-t border-zinc-200">
+    <section id="contacto" className="py-24 bg-zinc-50 border-t border-zinc-200 bg-grid-pattern">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -17,10 +17,10 @@ export function CtaSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-extrabold text-zinc-900 tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 tracking-tighter mb-4">
             Gestión de Subcontratos Listos para Operar
           </h2>
-          <p className="text-lg text-zinc-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-zinc-500 font-light max-w-2xl mx-auto leading-relaxed">
             Póngase en contacto con nuestro equipo de ingeniería. Integramos canales de atención instantánea para agilizar licitaciones.
           </p>
         </motion.div>
@@ -35,33 +35,51 @@ export function CtaSection() {
             className="lg:w-3/5 p-8 md:p-12 lg:p-16"
           >
             <h3 className="text-2xl font-bold text-zinc-900 mb-8">Cotización de Proyectos</h3>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form action={async (formData) => {
+              const { sendContactEmail } = await import('@/app/actions/sendEmail');
+              const button = document.getElementById('submitBtn') as HTMLButtonElement;
+              const originalText = button.innerText;
+              button.innerText = 'Enviando...';
+              button.disabled = true;
+              
+              const res = await sendContactEmail(formData);
+              
+              if (res.error) {
+                alert(res.error);
+                button.innerText = originalText;
+                button.disabled = false;
+              } else {
+                alert('¡Su solicitud ha sido enviada con éxito! Nos contactaremos a la brevedad.');
+                (document.getElementById('contactForm') as HTMLFormElement).reset();
+                button.innerText = 'Solicitud Enviada ✓';
+              }
+            }} id="contactForm" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Nombre Completo <span className="text-brand">*</span></label>
-                  <input type="text" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="Ej. Ing. Juan Pérez" />
+                  <input name="name" required type="text" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="Ej. Ing. Juan Pérez" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Empresa / Mandante <span className="text-brand">*</span></label>
-                  <input type="text" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="Ej. Constructora Sur" />
+                  <input name="company" required type="text" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="Ej. Constructora Sur" />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Correo Corporativo <span className="text-brand">*</span></label>
-                  <input type="email" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="juan@empresa.com" />
+                  <input name="email" required type="email" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="juan@empresa.com" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Teléfono Directo</label>
-                  <input type="tel" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="+56 9 0000 0000" />
+                  <input name="phone" type="tel" className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="+56 9 0000 0000" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Alcance y Envergadura del Proyecto</label>
-                <textarea rows={4} className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all resize-none" placeholder="Describa brevemente cubicación estimada, ubicación de faena y plazos..."></textarea>
+                <textarea name="message" rows={4} className="w-full bg-zinc-50 border border-zinc-200 px-4 py-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all resize-none" placeholder="Describa brevemente cubicación estimada, ubicación de faena y plazos..."></textarea>
               </div>
               <div className="pt-4">
-                <button className="w-full bg-zinc-900 hover:bg-black text-white py-4 font-bold tracking-widest text-sm uppercase transition-colors shadow-lg">
+                <button id="submitBtn" type="submit" className="w-full bg-zinc-950 hover:bg-black text-white py-4 font-bold tracking-widest text-sm uppercase transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-1 disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed">
                   Enviar Solicitud Comercial
                 </button>
               </div>
@@ -109,8 +127,8 @@ export function CtaSection() {
                     <Mail className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[10px] uppercase tracking-widest opacity-80 mb-1">Correo Oficial</h4>
-                    <span className="font-semibold text-base md:text-lg">info@frimat.cl</span>
+                    <h4 className="font-bold text-[10px] uppercase tracking-widest opacity-80 mb-1">Área Comercial</h4>
+                    <span className="font-semibold text-base md:text-lg">Mfuentes@frimat.cl</span>
                   </div>
                 </div>
 
@@ -119,24 +137,27 @@ export function CtaSection() {
                     <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[10px] uppercase tracking-widest opacity-80 mb-1">Mesa Central</h4>
-                    <span className="font-semibold text-base md:text-lg">+56 2 2222 3333</span>
+                    <h4 className="font-bold text-[10px] uppercase tracking-widest opacity-80 mb-1">Contacto Directo</h4>
+                    <span className="font-semibold text-base md:text-lg">+56 9 7809 4716</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-5">
+                  <div className="bg-black/20 p-3 rounded-full shrink-0">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[10px] uppercase tracking-widest opacity-80 mb-1">Oficinas Centrales</h4>
+                    <span className="font-semibold text-base md:text-lg uppercase">Lampa, Santiago</span>
                   </div>
                 </div>
 
               </div>
             </div>
             
-            <div className="relative z-10 mt-16 bg-black/20 p-5 rounded-sm border border-white/10 flex items-start gap-4 backdrop-blur-md">
-              <div>
-                <span className="text-[10px] text-zinc-300 uppercase tracking-[0.2em] font-bold mt-1 block mb-3">Enfoque Tecnológico</span>
-                <p className="text-xs font-medium leading-relaxed opacity-90">
-                  Infraestructura web, captura de leads conectada a WhatsApp corporativo y formularios desarrollados en tiempo récord gracias a los servicios de {" "}
-                  <a href="https://clikium.cl/" target="_blank" rel="noopener noreferrer" className="text-white font-bold bg-black/40 hover:bg-black/80 px-2 py-1 rounded transition-colors uppercase tracking-widest text-[10px]">
-                    Clikium
-                  </a>.
-                </p>
-              </div>
+            <div className="relative z-10 mt-16 p-6 border border-white/20 bg-white/5 backdrop-blur-xl rounded-sm">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-white/70">Horario de Atención</p>
+              <p className="text-sm font-semibold">Lunes a Viernes: 08:30 - 18:30 hrs</p>
             </div>
           </motion.div>
 

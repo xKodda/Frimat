@@ -7,55 +7,62 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-zinc-950/95 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-between h-20 md:h-24">
-        {/* Contenedor del Logo con fondo blanco para que se sienta como una "placa" o sello */}
+    <nav className="fixed top-0 w-full z-50 glass-panel-dark border-b border-white/5 transition-all duration-500">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20 md:h-24">
+        {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="bg-white p-2 md:p-2.5 rounded shadow-lg border border-white/10">
+          <a href="#" className="flex items-center">
             <Image 
               src="/logoFrimat.jpeg" 
               alt="Frimat Logo" 
               width={180} 
               height={60} 
-              className="w-auto h-7 md:h-11 object-contain"
+              className="w-auto h-10 md:h-12 object-contain brightness-110 contrast-125"
               priority
             />
-          </div>
+          </a>
         </div>
         
         {/* Navegación Desktop */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wide text-zinc-400">
-          <a href="#nosotros" className="hover:text-white transition-colors uppercase">La Empresa</a>
-          <a href="#servicios" className="hover:text-white transition-colors uppercase">Ejecución</a>
-          <a href="#proyectos" className="hover:text-white transition-colors uppercase">Proyectos</a>
+        <div className="hidden md:flex items-center gap-10 text-xs font-bold tracking-[0.2em] text-zinc-400">
+          <a href="#nosotros" className="hover:text-brand transition-colors uppercase relative group">
+            La Empresa
+            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#servicios" className="hover:text-brand transition-colors uppercase relative group">
+            Ejecución
+            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#proyectos" className="hover:text-brand transition-colors uppercase relative group">
+            Proyectos
+            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand transition-all duration-300 group-hover:w-full"></span>
+          </a>
         </div>
         
         {/* CTA Contacto Desktop */}
         <div className="hidden md:flex items-center">
-          <a href="#contacto" className="bg-brand hover:bg-brand-hover text-white px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all">
-            Contacto
+          <a href="#contacto" className="bg-brand hover:bg-brand-hover text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest transition-all shadow-glow hover:shadow-brand/20">
+            Iniciar Propuesta
           </a>
         </div>
 
-        {/* Mobile Toggle & CTA */}
-        <div className="flex md:hidden items-center gap-3">
-          <a href="#contacto" className="bg-brand hover:bg-brand-hover text-white px-4 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all">
-            Contacto
-          </a>
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-1">
+        {/* Mobile Toggle */}
+        <div className="flex md:hidden items-center">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-zinc-950 border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl pb-8">
-          <a href="#nosotros" onClick={() => setIsOpen(false)} className="text-zinc-300 font-bold hover:text-white uppercase tracking-wider">La Empresa</a>
-          <a href="#servicios" onClick={() => setIsOpen(false)} className="text-zinc-300 font-bold hover:text-white uppercase tracking-wider">Ejecución</a>
-          <a href="#proyectos" onClick={() => setIsOpen(false)} className="text-zinc-300 font-bold hover:text-white uppercase tracking-wider">Proyectos</a>
+      <div className={`md:hidden absolute top-full left-0 w-full bg-zinc-950/98 backdrop-blur-2xl border-b border-white/5 transition-all duration-500 overflow-hidden ${isOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="p-8 flex flex-col gap-6">
+          <a href="#nosotros" onClick={() => setIsOpen(false)} className="text-zinc-300 font-bold hover:text-brand uppercase tracking-[0.2em] text-xs">La Empresa</a>
+          <a href="#servicios" onClick={() => setIsOpen(false)} className="text-zinc-300 font-bold hover:text-brand uppercase tracking-[0.2em] text-xs">Ejecución</a>
+          <a href="#proyectos" onClick={() => setIsOpen(false)} className="text-zinc-300 font-bold hover:text-brand uppercase tracking-[0.2em] text-xs">Proyectos</a>
+          <a href="#contacto" onClick={() => setIsOpen(false)} className="bg-brand text-white p-4 text-center font-bold uppercase tracking-widest text-xs">Contacto</a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

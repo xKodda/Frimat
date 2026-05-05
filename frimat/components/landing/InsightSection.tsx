@@ -17,17 +17,17 @@ export function InsightSection() {
           transition={{ duration: 0.8 }}
           className="md:w-1/2"
         >
-          <div className="text-brand font-bold tracking-widest uppercase text-sm mb-4">Uso Comercial</div>
+          <div className="text-brand font-bold tracking-widest uppercase text-sm mb-4">Nuestra Diferencia</div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-8 leading-tight">
-            ¿Para qué te sirve esto en la práctica?
+            Compromiso con el <br/> Rigor Técnico
           </h2>
           <div className="space-y-6">
             {[
-              "Muestra lo que haces sin depender de recomendaciones ni enviar PDF desordenados.",
-              "Da peso a tu presentación cuando vas a hablar con el administrador de contrato.",
-              "Deja claro que trabajas con estándares altos, ordenando tu imagen de inmediato.",
-              "Te ahorra tener que convencerles desde cero sobre tu capacidad técnica.",
-              "Filtra dudas del mandante respondiendo visualmente con métricas concretas."
+              "Ejecución de obra gruesa bajo estándares internacionales de calidad.",
+              "Equipo técnico altamente calificado y con vasta experiencia en minería.",
+              "Cumplimiento garantizado de plazos críticos y metas de producción.",
+              "Protocolos de seguridad de clase mundial con tasa cero de incidentes.",
+              "Soporte de ingeniería constante durante todas las fases del proyecto."
             ].map((item, i) => (
               <motion.div 
                 custom={i}
@@ -52,13 +52,13 @@ export function InsightSection() {
           transition={{ duration: 0.8 }}
           className="md:w-1/2 max-w-sm ml-auto"
         >
-          <div className="bg-zinc-900 border border-zinc-800 p-8 relative rounded-sm">
+          <div className="bg-zinc-900/50 backdrop-blur-md border border-white/5 p-8 relative rounded-sm">
             <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-brand text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest shadow-lg">
-              Insight Estratégico
+              Excelencia Operativa
             </div>
-            <FileCheck2 className="w-8 h-8 text-zinc-500 mb-6" />
+            <FileCheck2 className="w-8 h-8 text-brand mb-6" />
             <p className="text-zinc-400 font-medium italic mb-2 leading-relaxed text-sm">
-              "El mandante decide mucho por percepción inicial. Si ven que tu empresa se presenta con este orden, asumen inmediatamente que en la obra trabajarás con ese mismo rigor, reduciendo la fricción para cerrar el subcontrato."
+              "Para Frimat, la ingeniería no es solo un plano; es la base de cada estructura que levantamos. Nuestra obsesión por el detalle nos permite entregar resultados que superan las expectativas de los mandantes más exigentes del país."
             </p>
           </div>
         </motion.div>

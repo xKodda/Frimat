@@ -9,6 +9,7 @@ import { CalculatorSection } from "@/components/landing/CalculatorSection";
 import { CtaSection } from "@/components/landing/CtaSection";
 import { Footer } from "@/components/landing/Footer";
 import { SplashScreen } from "@/components/landing/SplashScreen";
+import { AboutSection } from "@/components/landing/AboutSection";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <MetricsSection />
+      <AboutSection />
       <ProjectsSection />
       <FeaturesSection />
       <InsightSection />
